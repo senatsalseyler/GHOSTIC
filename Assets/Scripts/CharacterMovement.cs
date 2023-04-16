@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public GameObject player;
-    public CharacterController controller;
-    public float speed;
+    public MovementJoystick movementJoystick;
+    public float playerSpeed;
+    private Rigidbody2D rb;
 
-
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-
-        player.transform.position = new Vector2(x * speed , y * speed);
-
-
-        controller.Move(player.transform.position * speed * Time.deltaTime);
+        rb = GetComponent<Rigidbody2D>();
+    }
+    void FixedUpdate()
+    {
+        if(movementJoystick.joystickVec.y != 0)
+        {
+            rb.velocity = new Vector2(movementJoystick.joystickVec.x * playerSpeed, movementJoystick.joystickVec.y * playerSpeed);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 }
