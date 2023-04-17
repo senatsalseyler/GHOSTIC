@@ -12,6 +12,12 @@ public class CollisionController : MonoBehaviour
             Debug.Log("web");
             animator.SetBool("fire0", true);
         }
+        else if(collision.gameObject.CompareTag("angel"))
+        {
+            Debug.Log("angel");
+            animator.SetBool("reverse", true);
+        }
+
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -19,5 +25,10 @@ public class CollisionController : MonoBehaviour
         {
             animator.SetBool("fire0", false);
         }
+        else if(collision.gameObject.CompareTag("angel"))
+        {
+            animator.SetBool("reverse", false);
+        }
     }
+
 }
