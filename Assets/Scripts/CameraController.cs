@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public Transform BG1;
     public Transform BG2;
     private float size;
-
+    
     private Vector3 cameraTargetPos = new Vector3();
     private Vector3 BG1TargetPos = new Vector3();
     private Vector3 BG2TargetPos = new Vector3();
@@ -39,7 +39,6 @@ public class CameraController : MonoBehaviour
             BG1.position = SetPos(BG2TargetPos, BG1.position.x, BG2.position.y - size, BG1.position.z);
             SwitchingBG();
         }
-
     }
 
     private void SwitchingBG()
