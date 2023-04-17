@@ -17,8 +17,8 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        size = BG1.GetComponent<BoxCollider2D>().size.y;
-        size = BG2.GetComponent<BoxCollider2D>().size.y;
+        size = BG1.GetComponent<SpriteRenderer>().size.y;
+        size = BG2.GetComponent<SpriteRenderer>().size.y;
 
     }
 
