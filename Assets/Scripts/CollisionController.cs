@@ -12,12 +12,16 @@ public class CollisionController : MonoBehaviour
             Debug.Log("web");
             animator.SetBool("fire0", true);
         }
-        else if(collision.gameObject.CompareTag("angel"))
+        else if(collision.gameObject.CompareTag("mirror"))
         {
-            Debug.Log("angel");
+            Debug.Log("mirror");
             animator.SetBool("reverse", true);
         }
-
+        else if (collision.gameObject.CompareTag("cage"))
+        {
+            Debug.Log("cage");
+            animator.SetBool("bird", true);
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -25,9 +29,13 @@ public class CollisionController : MonoBehaviour
         {
             animator.SetBool("fire0", false);
         }
-        else if(collision.gameObject.CompareTag("angel"))
+        else if(collision.gameObject.CompareTag("mirror"))
         {
             animator.SetBool("reverse", false);
+        }
+        if (collision.gameObject.CompareTag("cage"))
+        {
+            animator.SetBool("bird", false);
         }
     }
 

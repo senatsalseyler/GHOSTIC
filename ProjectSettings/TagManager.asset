@@ -6,6 +6,8 @@ TagManager:
   tags:
   - web
   - angel
+  - mirror
+  - cage
   layers:
   - Default
   - TransparentFX
