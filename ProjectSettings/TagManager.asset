@@ -8,6 +8,7 @@ TagManager:
   - angel
   - mirror
   - cage
+  - ghost
   layers:
   - Default
   - TransparentFX

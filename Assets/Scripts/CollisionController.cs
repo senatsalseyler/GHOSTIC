@@ -17,11 +17,7 @@ public class CollisionController : MonoBehaviour
             Debug.Log("mirror");
             animator.SetBool("reverse", true);
         }
-        else if (collision.gameObject.CompareTag("cage"))
-        {
-            Debug.Log("cage");
-            animator.SetBool("bird", true);
-        }
+        
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -32,10 +28,6 @@ public class CollisionController : MonoBehaviour
         else if(collision.gameObject.CompareTag("mirror"))
         {
             animator.SetBool("reverse", false);
-        }
-        if (collision.gameObject.CompareTag("cage"))
-        {
-            animator.SetBool("bird", false);
         }
     }
 

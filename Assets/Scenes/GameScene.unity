@@ -1077,7 +1077,7 @@ GameObject:
   - component: {fileID: 529120520}
   m_Layer: 0
   m_Name: Ghost
-  m_TagString: Untagged
+  m_TagString: ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1092,7 +1092,7 @@ Animator:
   m_GameObject: {fileID: 529120515}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 464391951ee0dee43ab9284a81bb13d0, type: 2}
+  m_Controller: {fileID: 9100000, guid: d4a40428e2c08e540b18c8fe273a142e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1234,6 +1234,51 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
+--- !u!1 &698006814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7958739339869475387, guid: 44657aa18dafe0740863aa12a1c3f68a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7958739339205308197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &698006819
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698006814}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.100387305, y: -0.31789362}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 5}
+    newSize: {x: 5, y: 5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.38605, y: 2.6910875}
+  m_EdgeRadius: 0
+--- !u!114 &698006820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698006814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdc41ae1c3fd3e4bb86bec805f2ccaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 795565161}
 --- !u!1 &795565158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,7 +1374,7 @@ Animator:
   m_GameObject: {fileID: 795565158}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d4a40428e2c08e540b18c8fe273a142e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 464391951ee0dee43ab9284a81bb13d0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2266,6 +2311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958739339869475387, guid: 44657aa18dafe0740863aa12a1c3f68a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44657aa18dafe0740863aa12a1c3f68a, type: 3}
