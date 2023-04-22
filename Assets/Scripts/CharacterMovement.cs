@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     public float playerSpeed;
     private Rigidbody2D rb;
     private float levelWidth = 3f;
+    public GameObject spider ;
 
     void Start()
     {
@@ -23,6 +24,15 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             rb.velocity = Vector2.zero;
+        }
+    }
+
+    void Update()
+    {
+        spider = GameObject.FindGameObjectWithTag("spider");
+        if (Input.GetMouseButtonDown(1))
+        {
+            Destroy(spider);
         }
     }
 
