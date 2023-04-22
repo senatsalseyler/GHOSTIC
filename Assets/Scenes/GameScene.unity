@@ -1193,7 +1193,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementJoystick: {fileID: 114745249}
   playerSpeed: 8
-  spider: {fileID: 3867318544878106112, guid: a419408c109ea5c4b8d23228b10f9373, type: 3}
 --- !u!50 &529120521
 Rigidbody2D:
   serializedVersion: 4
@@ -1835,9 +1834,9 @@ MonoBehaviour:
   platforms: {fileID: 5605503530007644649}
   platform: {fileID: 5605503530007644651}
   numberOfPlatform: 400
-  levelWidth: 4
-  minY: 50
-  maxY: 80
+  levelWidth: 5
+  minY: 10
+  maxY: 25
 --- !u!1 &1991588037
 GameObject:
   m_ObjectHideFlags: 0
