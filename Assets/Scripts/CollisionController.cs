@@ -9,12 +9,10 @@ public class CollisionController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("web"))
         {
-            Debug.Log("web");
             animator.SetBool("fire0", true);
         }
         else if(collision.gameObject.CompareTag("mirror"))
         {
-            Debug.Log("mirror");
             animator.SetBool("reverse", true);
         }
         

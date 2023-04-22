@@ -10,7 +10,6 @@ public class BirdCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ghost"))
         {
-            Debug.Log("ghost");
             animator.SetBool("bird", true);
         }
     }

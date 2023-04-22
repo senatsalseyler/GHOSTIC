@@ -10,7 +10,6 @@ public class AngelCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ghost"))
         {
-            Debug.Log("ghost");
             animator.SetBool("glow", true);
         }
     }
