@@ -34,10 +34,12 @@ public class CharacterMovement : MonoBehaviour
         if(transform.position.x > levelWidth)
         {
             transform.position -= new Vector3(2 * levelWidth, 0, 0);
+
         }
         else if(transform.position.x < -levelWidth)
         {
             transform.position += new Vector3(2 * levelWidth, 0, 0);
+
         }
     }
 }

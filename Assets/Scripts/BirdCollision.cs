@@ -11,6 +11,8 @@ public class BirdCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("ghost"))
         {
             animator.SetBool("bird", true);
+            ScoreScript.scoreValue += 100;
+
         }
     }
 }

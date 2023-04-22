@@ -18,6 +18,7 @@ public class AngelCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("ghost"))
         {
             animator.SetBool("glow", false);
+            ScoreScript.scoreValue += 25;
         }
     }
 }
