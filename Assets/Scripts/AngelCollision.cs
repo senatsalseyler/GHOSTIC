@@ -19,6 +19,7 @@ public class AngelCollision : MonoBehaviour
         {
             animator.SetBool("glow", false);
             ScoreScript.scoreValue += 25;
+            
         }
     }
 }
