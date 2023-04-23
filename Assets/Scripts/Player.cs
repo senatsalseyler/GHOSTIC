@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public float health;
     public Slider slider;
+    public AudioSource spider_sound;
 
     void Update()
     {
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
         {
             health = health - 10f;
             ScoreScript.scoreValue -= 10;
-
+            spider_sound.Play();
         }
         else if (collision.gameObject.CompareTag("angel"))
         {

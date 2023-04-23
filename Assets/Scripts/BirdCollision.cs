@@ -5,6 +5,7 @@ using UnityEngine;
 public class BirdCollision : MonoBehaviour
 {
     public Animator animator;
+    public AudioSource bird_sound;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -12,7 +13,7 @@ public class BirdCollision : MonoBehaviour
         {
             animator.SetBool("bird", true);
             ScoreScript.scoreValue += 100;
-
+            bird_sound.Play();
         }
     }
 }

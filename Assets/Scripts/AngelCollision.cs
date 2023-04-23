@@ -5,12 +5,14 @@ using UnityEngine;
 public class AngelCollision : MonoBehaviour
 {
     public Animator animator;
+    public AudioSource angel_sound;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("ghost"))
         {
             animator.SetBool("glow", true);
+            angel_sound.Play();
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
