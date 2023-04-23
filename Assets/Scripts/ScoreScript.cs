@@ -6,15 +6,21 @@ using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour
 {
-    public static int scoreValue = 0;
-    Text score;
-    void Start()
-    {
-        score = GetComponent<Text>();
-    }
+    private int scoreValue = 0;
+    public Text scoreComp;
+    
 
-    void Update()
+    public void IncreaseScore(int score)
     {
-        score.text = "" + scoreValue;
+        int tempScore = this.scoreValue + score;
+        if(tempScore < 0)
+        {
+            this.scoreValue = 0;
+        }
+        else
+        {
+            this.scoreValue = tempScore;
+        }
+        scoreComp.text = "" + this.scoreValue;
     }
 }

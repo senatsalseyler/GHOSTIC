@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
     private Vector3 cameraTargetPos = new Vector3();
     private Vector3 BG1TargetPos = new Vector3();
     private Vector3 BG2TargetPos = new Vector3();
+    public ScoreScript scoreScript;
 
 
     // Start is called before the first frame update
@@ -33,7 +34,7 @@ public class CameraController : MonoBehaviour
         {
             BG1.position = SetPos(BG1TargetPos, BG1.position.x, BG2.position.y + size, BG1.position.z);
             SwitchingBG();
-            ScoreScript.scoreValue += 100;
+            scoreScript.IncreaseScore(100);
 
         }
         if (transform.position.y <= BG1.position.y)

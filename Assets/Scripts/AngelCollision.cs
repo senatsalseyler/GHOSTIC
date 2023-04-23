@@ -6,6 +6,8 @@ public class AngelCollision : MonoBehaviour
 {
     public Animator animator;
     public AudioSource angel_sound;
+    public ScoreScript scoreScript;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,7 +22,7 @@ public class AngelCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("ghost"))
         {
             animator.SetBool("glow", false);
-            ScoreScript.scoreValue += 25;
+            scoreScript.IncreaseScore(100);
             
         }
     }

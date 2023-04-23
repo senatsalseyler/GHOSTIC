@@ -8,6 +8,7 @@ public class CollisionController : MonoBehaviour
     public Animator animator;
     public AudioSource web_sound;
     public AudioSource mirror_sound;
+    public ScoreScript scoreScript;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,7 +36,7 @@ public class CollisionController : MonoBehaviour
         else if(collision.gameObject.CompareTag("mirror"))
         {
             animator.SetBool("reverse", false);
-            ScoreScript.scoreValue += 10;
+            scoreScript.IncreaseScore(25);
         }
     }
 
