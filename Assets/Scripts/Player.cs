@@ -18,11 +18,13 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("spider"))
         {
-            health = health - 10f; 
+            health = health - 10f;
+            ScoreScript.scoreValue -= 10;
+
         }
         else if (collision.gameObject.CompareTag("angel"))
         {
-            health = health + 100f;
+            health = health + 25f;
         }
     }
 }

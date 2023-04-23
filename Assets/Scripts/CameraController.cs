@@ -40,7 +40,6 @@ public class CameraController : MonoBehaviour
         {
             BG1.position = SetPos(BG2TargetPos, BG1.position.x, BG2.position.y - size, BG1.position.z);
             SwitchingBG();
-            ScoreScript.scoreValue -= 150;
         }
     }
 

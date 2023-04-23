@@ -12,7 +12,6 @@ public class CollisionController : MonoBehaviour
         if(collision.gameObject.CompareTag("web"))
         {
             animator.SetBool("fire0", true);
-            ScoreScript.scoreValue -= 75;
 
         }
         else if(collision.gameObject.CompareTag("mirror"))
