@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public Slider slider;
     public AudioSource spider_sound;
     public ScoreScript scoreScript;
+    public GameManager gameManager;
+    public GameObject GameOverScreen;
 
     void Update()
     {
@@ -22,6 +24,9 @@ public class Player : MonoBehaviour
         if(tempHealth <= 0)
         {
             this.health = 0;
+            gameManager.pauseGame();
+            GameOverScreen.SetActive(true);
+            
             //death
         }
         else if(tempHealth >= 100)
