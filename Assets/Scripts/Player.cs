@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public ScoreScript scoreScript;
     public GameManager gameManager;
     public GameObject GameOverScreen;
-
+    public Text score;
     void Update()
     {
         slider.value = health;
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
             this.health = 0;
             gameManager.pauseGame();
             GameOverScreen.SetActive(true);
-            
+            score.text = scoreScript.scoreValue.ToString();
             //death
         }
         else if(tempHealth >= 100)

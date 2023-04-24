@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour
 {
-    private int scoreValue = 0;
+    public int scoreValue = 0;
     public Text scoreComp;
     
 
