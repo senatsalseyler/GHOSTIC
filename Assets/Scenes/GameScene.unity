@@ -958,7 +958,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: af6edb08e1f686041a968120f681aff9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2349,7 +2349,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 57f5f9fc49e59cb4ca4ae0d069d09f33, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3578,7 +3578,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 08b4ba6cd22a9ab4986a13fff034f354, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4253,7 +4253,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e07acf4be273f6d4d884b12942c8e800, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4630,7 +4630,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f774745547be04e44b21c354aa711b9f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5604,6 +5604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed16d9815f35fd4bbe5fc6345f2f196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 0
   scoreComp: {fileID: 952290686}
 --- !u!1 &1521957613
 GameObject:
