@@ -7,7 +7,7 @@ public class Spider : MonoBehaviour
     public GameObject spider ;
     public AudioSource hit;
     public GameObject boss_spider;
-    private const float DOUBLE_CLICK_TIME = .2f;
+    private const float DOUBLE_CLICK_TIME = .5f;
     private float lastClickTime;
 
     //    public Animation smashAnimation;
@@ -23,7 +23,7 @@ public class Spider : MonoBehaviour
 
             if(timeSinceLastClick <= DOUBLE_CLICK_TIME)
             {
-                Destroy(boss_spider, 0.25f);
+                Destroy(boss_spider, 0.15f);
 
             }
             
