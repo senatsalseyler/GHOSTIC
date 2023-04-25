@@ -958,7 +958,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: af6edb08e1f686041a968120f681aff9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2034,7 +2034,7 @@ Animator:
   m_GameObject: {fileID: 395087658}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 36454a0cba662904a8e6597f3f431634, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4043c7f0478ca1c4eb9ae72b9e0904b9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2349,7 +2349,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 57f5f9fc49e59cb4ca4ae0d069d09f33, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3578,7 +3578,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 08b4ba6cd22a9ab4986a13fff034f354, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4134,6 +4134,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138508226}
   m_CullTransparentMesh: 1
+--- !u!95 &1179943899 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5389081405178059389, guid: 65a4c33bbcd3df8428a367ef924e1282,
+    type: 3}
+  m_PrefabInstance: {fileID: 5229632805199726860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1209249269 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7958739339869475387, guid: 44657aa18dafe0740863aa12a1c3f68a,
@@ -4253,7 +4259,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e07acf4be273f6d4d884b12942c8e800, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4630,7 +4636,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: f774745547be04e44b21c354aa711b9f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7022,12 +7028,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1789009116720343165, guid: 65a4c33bbcd3df8428a367ef924e1282,
         type: 3}
+      propertyPath: hit
+      value: 
+      objectReference: {fileID: 470218053}
+    - target: {fileID: 1789009116720343165, guid: 65a4c33bbcd3df8428a367ef924e1282,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1179943899}
+    - target: {fileID: 1789009116720343165, guid: 65a4c33bbcd3df8428a367ef924e1282,
+        type: 3}
       propertyPath: animation
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1789009116720343165, guid: 65a4c33bbcd3df8428a367ef924e1282,
         type: 3}
       propertyPath: smashAnimation
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1789009116720343165, guid: 65a4c33bbcd3df8428a367ef924e1282,
+        type: 3}
+      propertyPath: smash_animation
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2724824853683283752, guid: 65a4c33bbcd3df8428a367ef924e1282,
@@ -7040,6 +7061,16 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 0.008366331
       objectReference: {fileID: 0}
+    - target: {fileID: 3853800447091265486, guid: 65a4c33bbcd3df8428a367ef924e1282,
+        type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3853800447091265486, guid: 65a4c33bbcd3df8428a367ef924e1282,
+        type: 3}
+      propertyPath: m_Animations.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: 55e6b4125d6ed6646a4fcc8f00d88ddb, type: 2}
     - target: {fileID: 5389081405178059376, guid: 65a4c33bbcd3df8428a367ef924e1282,
         type: 3}
       propertyPath: target

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spider : MonoBehaviour
 {
     public GameObject spider ;
+    public AudioSource hit;
 //    public Animation smashAnimation;
 //    bool isDestroyStarted = false;
     void Update()
@@ -13,18 +14,20 @@ public class Spider : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            Destroy(spider);
+            hit.Play();
+            Destroy(spider, 0.2f);
         }
 
-            //        if(!smashAnimation.isPlaying && isDestroyStarted)
-            //        {
-            //            Destroy(spider);
-            //        }
-            //        if (Input.GetMouseButtonDown(1) && !isDestroyStarted)
-            //        {
-            //            smashAnimation.Play();
-            //            isDestroyStarted = true;
-            //        }
+
+        //        if(!smashAnimation.isPlaying && isDestroyStarted)
+        //        {
+        //            Destroy(spider);
+        //        }
+        //        if (Input.GetMouseButtonDown(1) && !isDestroyStarted)
+        //        {
+        //            smashAnimation.Play();
+        //            isDestroyStarted = true;
+        //        }
 
     }
 }

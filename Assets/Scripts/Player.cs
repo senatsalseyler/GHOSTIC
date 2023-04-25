@@ -13,9 +13,13 @@ public class Player : MonoBehaviour
     public GameManager gameManager;
     public GameObject GameOverScreen;
     public Text score;
+    private GameObject angel;
+
+    
     void Update()
     {
         slider.value = health;
+        angel = GameObject.FindGameObjectWithTag("angel");
     }
 
     public void IncreaseHealth(float health)
@@ -54,6 +58,7 @@ public class Player : MonoBehaviour
         else if (collision.gameObject.CompareTag("angel"))
         {
             IncreaseHealth(25f);
+            Destroy(angel, 0.7f);
         }
     }
 }
