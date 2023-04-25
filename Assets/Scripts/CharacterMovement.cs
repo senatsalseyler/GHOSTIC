@@ -8,7 +8,8 @@ public class CharacterMovement : MonoBehaviour
     public float playerSpeed;
     private Rigidbody2D rb;
     private float levelWidth = 3.5f;
-
+    [SerializeField]
+    private float _rotationSpeed;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,6 +18,12 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         DontExitTheScreen();
+        SetPlayerVelocity();
+        RotateInDirectionOfInput();
+    }
+
+    private void SetPlayerVelocity()
+    {
         if (movementJoystick.joystickVec.y != 0)
         {
             rb.velocity = new Vector2(movementJoystick.joystickVec.x * playerSpeed,
@@ -28,6 +35,15 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    private void RotateInDirectionOfInput()
+    {
+        if(movementJoystick.joystickVec != Vector2.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(transform.forward, movementJoystick.joystickVec);
+            Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+            rb.MoveRotation(rotation);
+        }
+    }
 
     private void DontExitTheScreen()
     {
