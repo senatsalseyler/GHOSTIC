@@ -10,6 +10,7 @@ TagManager:
   - cage
   - ghost
   - spider
+  - boss_spider
   layers:
   - Default
   - TransparentFX

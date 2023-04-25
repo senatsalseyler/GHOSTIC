@@ -60,5 +60,16 @@ public class Player : MonoBehaviour
             IncreaseHealth(25f);
             Destroy(angel, 0.7f);
         }
+
+        else if (collision.gameObject.CompareTag("boss_spider"))
+        {
+            IncreaseHealth(-20f);
+            scoreScript.IncreaseScore(-100);
+
+            spider_sound.Play();
+
+            Vector3 direction = (transform.position - collision.transform.position).normalized;
+            gameObject.GetComponent<Rigidbody2D>().AddForce(direction * -100f);
+        }
     }
 }
