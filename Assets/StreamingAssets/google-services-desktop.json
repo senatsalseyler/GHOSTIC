@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "396955528196",
+    "project_id": "ghostic-c4819",
+    "storage_bucket": "ghostic-c4819.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396955528196:android:186f3d67a863ad1be81951",
+        "android_client_info": {
+          "package_name": "com.senatunc.ghostic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396955528196-j9hs4j1kikcu0ag4stkftv91a39e36je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDPeApEoyiHsnhKhAei_BVW2NVNT_lqpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396955528196-j9hs4j1kikcu0ag4stkftv91a39e36je.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "396955528196-ct6fur30s7bnt1k00d11bp8us4o3d9l6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.senatunc.ghostic"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

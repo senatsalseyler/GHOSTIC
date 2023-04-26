@@ -7402,6 +7402,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: web_with_spider
       objectReference: {fileID: 0}
+    - target: {fileID: 970119869208650146, guid: 65a4c33bbcd3df8428a367ef924e1282,
+        type: 3}
+      propertyPath: m_IgnoreReversedGraphics
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1789009116720343165, guid: 65a4c33bbcd3df8428a367ef924e1282,
         type: 3}
       propertyPath: hit
@@ -7440,12 +7445,22 @@ PrefabInstance:
     - target: {fileID: 2724824853683283752, guid: 65a4c33bbcd3df8428a367ef924e1282,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.9915632
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724824853683283752, guid: 65a4c33bbcd3df8428a367ef924e1282,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 2724824853683283752, guid: 65a4c33bbcd3df8428a367ef924e1282,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.008366331
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724824853683283752, guid: 65a4c33bbcd3df8428a367ef924e1282,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3853800447091265486, guid: 65a4c33bbcd3df8428a367ef924e1282,
         type: 3}
