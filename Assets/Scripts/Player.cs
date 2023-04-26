@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         slider.value = health;
-        angel = GameObject.FindGameObjectWithTag("angel");
     }
 
     public void IncreaseHealth(float health)
@@ -58,7 +57,7 @@ public class Player : MonoBehaviour
         else if (collision.gameObject.CompareTag("angel"))
         {
             IncreaseHealth(25f);
-            Destroy(angel, 0.7f);
+            Destroy(collision.gameObject, 0.1f);
         }
 
         else if (collision.gameObject.CompareTag("boss_spider"))

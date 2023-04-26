@@ -22,12 +22,12 @@
         "com.google.firebase.app": "10.7.0"
       }
     },
-    "com.google.firebase.database": {
-      "version": "file:./com.google.firebase.database-10.7.0.tgz",
+    "com.google.firebase.firestore": {
+      "version": "file:com.google.firebase.firestore-10.7.0.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {
-        "com.google.firebase.auth": "10.7.0"
+        "com.google.firebase.app": "10.7.0"
       }
     },
     "com.unity.2d.animation": {
