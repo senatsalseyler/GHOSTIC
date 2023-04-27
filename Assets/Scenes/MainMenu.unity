@@ -3255,26 +3255,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1) drag the joystick below to move Ghostic
+  m_text: '1) drag the joystick below to move Ghostic.
 
 
-    2) right click to kill
-    the spiders, double right click to kill boss spiders
+    2) Click once to kill
+    spiders, double click to kill boss spiders.
 
 
-    3) In mobile: Click
-    again while dragging the joystick to kill the spiders, double click for the boss
-    spiders. It''s harder to kill them.
+    3) find angels to heal ghostic.
 
 
-    4) find angels to heal ghostic
+    4)
+    find mirrors to fix ghostic''s deformations.
 
 
-    5)
-    find mirrors to fix ghostic''s deformations
-
-
-    6) Reach higher as possible
+    5) Reach higher as possible
     and save the birds from their cages.
 
 
@@ -3305,7 +3300,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.85
+  m_fontSize: 24.55
   m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 1

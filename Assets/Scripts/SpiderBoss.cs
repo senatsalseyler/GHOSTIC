@@ -21,7 +21,7 @@ public class SpiderBoss : MonoBehaviour
 
         if (timeSinceLastClick <= DOUBLE_CLICK_TIME)
         {
-            animator.Play("smash");
+            animator.Play("boss_spider_smash");
             Destroy(gameObject, 0.3f);
         }
         lastClickTime = Time.time;
