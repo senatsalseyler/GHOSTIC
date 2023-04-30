@@ -8,15 +8,23 @@
     <package>com.google.firebase:firebase-common:20.3.2</package>
     <package>com.google.firebase:firebase-firestore:24.4.5</package>
     <package>com.google.firebase:firebase-firestore-unity:10.7.0</package>
+    <package>com.google.games:gpgs-plugin-support:0.11.01</package>
   </packages>
-  <files />
+  <files>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/10.7.0/firebase-app-unity-10.7.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-app-unity/10.7.0/firebase-app-unity-10.7.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-auth-unity/10.7.0/firebase-auth-unity-10.7.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-auth-unity/10.7.0/firebase-auth-unity-10.7.0.pom</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-firestore-unity/10.7.0/firebase-firestore-unity-10.7.0.aar</file>
+    <file>Assets/GeneratedLocalRepo/Firebase/m2repository/com/google/firebase/firebase-firestore-unity/10.7.0/firebase-firestore-unity-10.7.0.pom</file>
+  </files>
   <settings>
     <setting name="androidAbis" value="armeabi-v7a" />
-    <setting name="bundleId" value="com.com.senatunc.ghostic.GHOSTIC" />
+    <setting name="bundleId" value="com.senatunc.ghostic" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
-    <setting name="gradlePropertiesTemplateEnabled" value="False" />
-    <setting name="gradleTemplateEnabled" value="False" />
+    <setting name="gradlePropertiesTemplateEnabled" value="True" />
+    <setting name="gradleTemplateEnabled" value="True" />
     <setting name="installAndroidPackages" value="True" />
     <setting name="localMavenRepoDir" value="Assets/GeneratedLocalRepo" />
     <setting name="packageDir" value="Assets/Plugins/Android" />

@@ -50,13 +50,5 @@
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
   },
-  "scopedRegistries": [
-    {
-      "name": "github",
-      "url": "https://registry.spoiledcat.com",
-      "scopes": [
-        "com.spoiledcat"
-      ]
-    }
-  ]
+  "scopedRegistries": []
 }

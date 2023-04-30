@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
             gameManager.pauseGame();
             GameOverScreen.SetActive(true);
             score.text = scoreScript.scoreValue.ToString();
+            scoreScript.WriteScore();
             //death
         }
         else if(tempHealth >= 100)

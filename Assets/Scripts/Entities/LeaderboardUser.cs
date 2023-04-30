@@ -1,17 +1,16 @@
 ﻿using System;
+using Firebase.Firestore;
 
+[FirestoreData]
 public class LeaderboardUser
 {
-    public LeaderboardUser(int score, string userId, DateTime timestamp)
-    {
-        this.user_id = userId;
-        this.score = score;
-        this.timestamp = timestamp;
-    }
+    
+    [FirestoreProperty]
+    public string UserId { get; set; }
 
-    public string user_id { get; set; }
+    [FirestoreProperty]
+    public int Score { get; set; }
 
-    public int score { get; set; }
-
-    public DateTime timestamp { get; set; }
+    [FirestoreProperty]
+    public DateTime TimeStamp { get; set; }
 }
