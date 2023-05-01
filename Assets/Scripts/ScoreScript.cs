@@ -35,14 +35,13 @@ public class ScoreScript : MonoBehaviour
         CollectionReference colRef = db.Collection("leaderboard");
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         Firebase.Auth.FirebaseUser user = auth.CurrentUser;
-        string uid = "";
-        if (user != null)
+        if (user == null)
         {
             return;
         }
 
         LeaderboardUser leaderboardUser = new LeaderboardUser()
-            { Score = scoreValue, TimeStamp = new DateTime(), UserId = uid };
+            { Score = scoreValue, TimeStamp = new DateTime(), UserId = user.UserId, UserName = user.DisplayName,Platform = Application.platform.ToString() };
         await colRef.AddAsync(leaderboardUser);
     }
 }

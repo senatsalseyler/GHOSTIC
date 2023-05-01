@@ -37,7 +37,7 @@ public class GlobalLeaderboard : MonoBehaviour
             GameObject obj = Instantiate(CellPrefab,gameObject.transform.GetChild(0));
             obj.transform.localScale = new Vector3(1, 1, 1);
             obj.transform.GetChild(0).GetComponent<TMPro.TMP_Text>().text = position.ToString();
-            obj.transform.GetChild(1).GetComponent<TMPro.TMP_Text>().text = leaderboardUser.UserId;
+            obj.transform.GetChild(1).GetComponent<TMPro.TMP_Text>().text = leaderboardUser.UserName;
             obj.transform.GetChild(2).GetComponent<TMPro.TMP_Text>().text = leaderboardUser.Score.ToString();
             position++;
         }

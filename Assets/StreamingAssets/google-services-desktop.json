@@ -8,27 +8,35 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:245959754264:android:0d7c83f11a18acdfe9396d",
+        "mobilesdk_app_id": "1:245959754264:android:315bd3aa6a46baf4e9396d",
         "android_client_info": {
           "package_name": "com.senatunc.ghostic"
         }
       },
       "oauth_client": [
         {
-          "client_id": "245959754264-rseb7dnc4epvast2fs7nkjf184dv29ek.apps.googleusercontent.com",
+          "client_id": "245959754264-08iptrir641h63pc1tqo4dcf6t87a6kj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.senatunc.ghostic",
+            "certificate_hash": "12a555ec0dc752c63716467fa6177e561ab12753"
+          }
+        },
+        {
+          "client_id": "245959754264-9pfqdl1k642rgco6kl6m8cfrc6vkjpq9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAGypLE2aqxwttq4wNR6HjGGIwuVQPNKyg"
+          "current_key": "AIzaSyALbc3p1KfdshvHRevA6w9fQ26erPZh8sA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "245959754264-rseb7dnc4epvast2fs7nkjf184dv29ek.apps.googleusercontent.com",
+              "client_id": "245959754264-9pfqdl1k642rgco6kl6m8cfrc6vkjpq9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
