@@ -41,6 +41,9 @@ public class CameraController : MonoBehaviour
         {
             BG1.position = SetPos(BG2TargetPos, BG1.position.x, BG2.position.y - size, BG1.position.z);
             SwitchingBG();
+
+            //Decreases score if player moves ghost lower than current background tile.
+            scoreScript.IncreaseScore(-100);
         }
     }
 
