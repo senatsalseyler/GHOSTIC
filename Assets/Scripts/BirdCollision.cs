@@ -8,11 +8,20 @@ public class BirdCollision : MonoBehaviour
     public AudioSource bird_sound;
     public ScoreScript scoreScript;
 
+    //A boolean for denifying have we ever interacted with cage.
+    private bool isBirdFree;
+
+    private void Start()
+    {
+        isBirdFree = false;
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("ghost"))
+        if (collision.gameObject.CompareTag("ghost") && !isBirdFree)
         {
+            isBirdFree = true;
             animator.SetBool("bird", true);
             scoreScript.IncreaseScore(125);
             bird_sound.Play();
