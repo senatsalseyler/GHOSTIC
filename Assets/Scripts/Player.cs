@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public float health;
     public Slider slider;
     public AudioSource spider_sound;
-    public ScoreScript scoreScript;
+    public ScoreScriptNew scoreScript;
     public GameManager gameManager;
     public GameObject GameOverScreen;
     public Text score;
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
             this.health = 0;
             gameManager.pauseGame();
             GameOverScreen.SetActive(true);
-            score.text = scoreScript.scoreValue.ToString();
+            score.text = scoreScript.finalScore.ToString();
             scoreScript.WriteScore();
             //death
         }

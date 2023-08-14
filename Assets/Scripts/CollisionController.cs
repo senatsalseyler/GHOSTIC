@@ -8,7 +8,7 @@ public class CollisionController : MonoBehaviour
     public Animator animator;
     public AudioSource web_sound;
     public AudioSource mirror_sound;
-    public ScoreScript scoreScript;
+    public ScoreScriptNew scoreScript;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
