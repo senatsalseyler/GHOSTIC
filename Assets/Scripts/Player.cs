@@ -12,13 +12,26 @@ public class Player : MonoBehaviour
     public ScoreScriptNew scoreScript;
     public GameManager gameManager;
     public GameObject GameOverScreen;
-    public Text score;
+    public Text lastScore;
+    public Text highScore;
     private GameObject angel;
 
-    
+    void Start()
+    {
+            //PlayerPrefs.SetInt("HighScore", (int)0);
+    }
+
     void Update()
     {
         slider.value = health;
+    }
+    
+
+    void FixedUpdate()
+    {
+        /*if ((int)scoreScript.finalScore >= PlayerPrefs.GetInt("HighScore", 0))
+        {
+        }*/
     }
 
     public void IncreaseHealth(float health)
@@ -29,7 +42,23 @@ public class Player : MonoBehaviour
             this.health = 0;
             gameManager.pauseGame();
             GameOverScreen.SetActive(true);
-            score.text = scoreScript.finalScore.ToString();
+            if ((int)scoreScript.finalScore >= PlayerPrefs.GetInt("HighScore", 0))
+            {
+                PlayerPrefs.SetInt("HighScore", (int)scoreScript.finalScore);
+                highScore.text = scoreScript.finalScore.ToString();
+            }
+            else
+            {
+                highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+            }
+            if (scoreScript.finalScore >= 0)
+            {
+                lastScore.text = scoreScript.finalScore.ToString();
+            }
+            else
+            {
+                lastScore.text = "0";
+            }
             scoreScript.WriteScore();
             //death
         }
@@ -48,7 +77,8 @@ public class Player : MonoBehaviour
         if(collision.gameObject.CompareTag("spider"))
         {
             IncreaseHealth(-10f);
-            scoreScript.IncreaseScore(-100);
+            //Cancelled feature.
+            //scoreScript.IncreaseScore(-100);
             
             spider_sound.Play();
             
@@ -63,7 +93,8 @@ public class Player : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("boss_spider"))
         {
-            IncreaseHealth(-20f);
+            //Cancelled feature.
+            //IncreaseHealth(-20f);
             scoreScript.IncreaseScore(-100);
 
             spider_sound.Play();

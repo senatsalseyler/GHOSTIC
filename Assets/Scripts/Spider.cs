@@ -25,14 +25,15 @@ public class Spider : MonoBehaviour
         Destroy(gameObject, 0.3f);
     }
 
-
-    //        if(!smashAnimation.isPlaying && isDestroyStarted)
-    //        {
-    //            Destroy(spider);
-    //        }
-    //        if (Input.GetMouseButtonDown(1) && !isDestroyStarted)
-    //        {
-    //            smashAnimation.Play();
-    //            isDestroyStarted = true;
-    //        }
+    /*
+    if(!smashAnimation.isPlaying && isDestroyStarted)
+    {
+        Destroy(spider);
+    }
+    if (Input.GetMouseButtonDown(1) && !isDestroyStarted)
+    {
+        smashAnimation.Play();
+        isDestroyStarted = true;
+    }
+    */
 }
