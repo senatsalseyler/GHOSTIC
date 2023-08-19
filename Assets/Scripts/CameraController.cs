@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
     private Vector3 cameraTargetPos = new Vector3();
     private Vector3 BG1TargetPos = new Vector3();
     private Vector3 BG2TargetPos = new Vector3();
-    public ScoreScript scoreScript;
+    public ScoreScriptNew scoreScript;
 
 
     // Start is called before the first frame update

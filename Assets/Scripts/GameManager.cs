@@ -25,6 +25,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void mainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void ExitGame()
     {
         Application.Quit();

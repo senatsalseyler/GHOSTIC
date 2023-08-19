@@ -6,7 +6,7 @@ public class AngelCollision : MonoBehaviour
 {
     public Animator animator;
     public AudioSource angel_sound;
-    public ScoreScript scoreScript;
+    public ScoreScriptNew scoreScript;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -22,8 +22,9 @@ public class AngelCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("ghost"))
         {
             animator.SetBool("glow", false);
-            scoreScript.IncreaseScore(100);
-            
+
+            /* Cancelled feature. Increases life when collide an angel.
+            scoreScript.IncreaseScore(100); */
         }
     }
 }
