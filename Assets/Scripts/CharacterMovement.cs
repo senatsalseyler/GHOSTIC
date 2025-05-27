@@ -26,12 +26,12 @@ public class CharacterMovement : MonoBehaviour
     {
         if (movementJoystick.joystickVec.y != 0)
         {
-            rb.velocity = new Vector2(movementJoystick.joystickVec.x * playerSpeed,
+            rb.linearVelocity = new Vector2(movementJoystick.joystickVec.x * playerSpeed,
                 movementJoystick.joystickVec.y * playerSpeed);
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 

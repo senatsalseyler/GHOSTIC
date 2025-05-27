@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public float health;
     public Slider slider;
     public AudioSource spider_sound;
-    public ScoreScriptNew scoreScript;
+//    public ScoreScriptNew scoreScript;
     public GameManager gameManager;
     public GameObject GameOverScreen;
     public Text lastScore;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
             this.health = 0;
             gameManager.pauseGame();
             GameOverScreen.SetActive(true);
-            if ((int)scoreScript.finalScore >= PlayerPrefs.GetInt("HighScore", 0))
+/*            if ((int)scoreScript.finalScore >= PlayerPrefs.GetInt("HighScore", 0))
             {
                 PlayerPrefs.SetInt("HighScore", (int)scoreScript.finalScore);
                 highScore.text = scoreScript.finalScore.ToString();
@@ -61,8 +61,10 @@ public class Player : MonoBehaviour
             }
             scoreScript.WriteScore();
             //death
+        
+        */
         }
-        else if(tempHealth >= 100)
+        if(tempHealth >= 100)
         {
             this.health = 100;
         }
@@ -95,7 +97,7 @@ public class Player : MonoBehaviour
         {
             //Cancelled feature.
             //IncreaseHealth(-20f);
-            scoreScript.IncreaseScore(-100);
+//            scoreScript.IncreaseScore(-100);
 
             spider_sound.Play();
 

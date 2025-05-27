@@ -6,7 +6,7 @@ public class AngelCollision : MonoBehaviour
 {
     public Animator animator;
     public AudioSource angel_sound;
-    public ScoreScriptNew scoreScript;
+//    public ScoreScriptNew scoreScript;
 
 
     private void OnCollisionEnter2D(Collision2D collision)

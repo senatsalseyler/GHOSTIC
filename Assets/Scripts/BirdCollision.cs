@@ -6,7 +6,7 @@ public class BirdCollision : MonoBehaviour
 {
     public Animator animator;
     public AudioSource bird_sound;
-    public ScoreScriptNew scoreScript;
+//    public ScoreScriptNew scoreScript;
 
     //A boolean for denifying have we ever interacted with cage.
     private bool isBirdFree;
@@ -23,7 +23,7 @@ public class BirdCollision : MonoBehaviour
         {
             isBirdFree = true;
             animator.SetBool("bird", true);
-            scoreScript.IncreaseScore(125);
+//            scoreScript.IncreaseScore(125);
             bird_sound.Play();
         }
     }
