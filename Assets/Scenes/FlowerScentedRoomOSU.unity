@@ -3079,7 +3079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e18e3fb6f5de6c41b1423dc92a8f600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTreasures: 5
+  totalTreasures: 10
   treasurePrefab: {fileID: 7499232983301646651}
   endPointPrefab: {fileID: 1065419492}
   player: {fileID: 529120518}
