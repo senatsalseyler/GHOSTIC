@@ -10,129 +10,85 @@ public class TreasureSpot : MonoBehaviour
     [Header("Visual Effects")]
     public GameObject sparkleEffect;
     
-    [Header("UI Elements")]
-    public Canvas worldCanvas; // World space canvas for this treasure
-    public GameObject progressBarUI;
-    public Slider progressBar;
-    public Image treasureIcon;
-    public Sprite treasureSprite;
-    
     [Header("Interaction Settings")]
     public float interactionTime = 2f;
     private float randomInteractionTime;
+    
+    // UI Elements - created dynamically
+    private GameObject progressBarContainer;
+    private Image progressBarFill;
     
     private bool playerNearby = false;
     private bool isInteracting = false;
     private bool isCollected = false;
     private float currentProgress = 0f;
-    private Camera mainCamera;
     
     void Start()
     {
-        mainCamera = Camera.main;
         if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-            
-        // Create world canvas if it doesn't exist
-        if (worldCanvas == null)
         {
-            CreateWorldCanvas();
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+                player = playerObj.transform;
         }
         
-        // Hide UI elements initially
+        // Hide sparkle effect initially
         if (sparkleEffect != null)
             sparkleEffect.SetActive(false);
-        if (progressBarUI != null)
-            progressBarUI.SetActive(false);
-        
-        // Set treasure sprite
-        if (treasureIcon != null && treasureSprite != null)
-            treasureIcon.sprite = treasureSprite;
             
         // Set random interaction time (1-4 seconds)
         randomInteractionTime = Random.Range(1f, 4f);
         
+        // Create progress bar UI
+        CreateProgressBar();
+        
         Debug.Log($"TreasureSpot {gameObject.name} initialized with interaction time: {randomInteractionTime}");
     }
     
-    void CreateWorldCanvas()
+    void CreateProgressBar()
     {
-        // Create a world space canvas for this treasure
+        // Create canvas for this treasure spot
         GameObject canvasObj = new GameObject("TreasureCanvas");
         canvasObj.transform.SetParent(transform);
-        canvasObj.transform.localPosition = Vector3.zero;
+        canvasObj.transform.localPosition = new Vector3(0, 1.5f, 0); // Position above treasure
         
-        worldCanvas = canvasObj.AddComponent<Canvas>();
-        worldCanvas.renderMode = RenderMode.WorldSpace;
-        worldCanvas.worldCamera = mainCamera;
+        Canvas canvas = canvasObj.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.WorldSpace;
+        canvas.worldCamera = Camera.main;
         
-        CanvasScaler scaler = canvasObj.AddComponent<CanvasScaler>();
-        scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
-        scaler.scaleFactor = 0.01f;
+        // Set appropriate scale for world space
+        RectTransform canvasRect = canvasObj.GetComponent<RectTransform>();
+        canvasRect.sizeDelta = new Vector2(3, 0.5f);
+        canvasRect.localScale = Vector3.one * 0.1f; // Much larger scale than before
         
-        // Create progress bar UI if it doesn't exist
-        if (progressBarUI == null)
-        {
-            CreateProgressBarUI();
-        }
-    }
-    
-    void CreateProgressBarUI()
-    {
-        // Create progress bar background
-        GameObject bgObj = new GameObject("ProgressBarBG");
-        bgObj.transform.SetParent(worldCanvas.transform);
-        bgObj.transform.localPosition = new Vector3(0, 100, 0);
-        bgObj.transform.localScale = Vector3.one;
+        // Create background for progress bar
+        GameObject bgObj = new GameObject("ProgressBG");
+        bgObj.transform.SetParent(canvasObj.transform);
+        
+        RectTransform bgRect = bgObj.AddComponent<RectTransform>();
+        bgRect.anchorMin = Vector2.zero;
+        bgRect.anchorMax = Vector2.one;
+        bgRect.offsetMin = Vector2.zero;
+        bgRect.offsetMax = Vector2.zero;
         
         Image bgImage = bgObj.AddComponent<Image>();
-        bgImage.color = new Color(0, 0, 0, 0.5f);
+        bgImage.color = new Color(0.2f, 0.2f, 0.2f, 0.8f); // Dark background
         
-        RectTransform bgRect = bgObj.GetComponent<RectTransform>();
-        bgRect.sizeDelta = new Vector2(200, 30);
+        // Create fill for progress bar
+        GameObject fillObj = new GameObject("ProgressFill");
+        fillObj.transform.SetParent(bgObj.transform);
         
-        // Create slider
-        GameObject sliderObj = new GameObject("ProgressSlider");
-        sliderObj.transform.SetParent(bgObj.transform);
-        sliderObj.transform.localPosition = Vector3.zero;
-        sliderObj.transform.localScale = Vector3.one;
-        
-        progressBar = sliderObj.AddComponent<Slider>();
-        progressBar.minValue = 0f;
-        progressBar.maxValue = 1f;
-        progressBar.value = 0f;
-        
-        RectTransform sliderRect = sliderObj.GetComponent<RectTransform>();
-        sliderRect.anchorMin = Vector2.zero;
-        sliderRect.anchorMax = Vector2.one;
-        sliderRect.offsetMin = Vector2.zero;
-        sliderRect.offsetMax = Vector2.zero;
-        
-        // Create fill area
-        GameObject fillAreaObj = new GameObject("Fill Area");
-        fillAreaObj.transform.SetParent(sliderObj.transform);
-        RectTransform fillAreaRect = fillAreaObj.AddComponent<RectTransform>();
-        fillAreaRect.anchorMin = Vector2.zero;
-        fillAreaRect.anchorMax = Vector2.one;
-        fillAreaRect.offsetMin = Vector2.zero;
-        fillAreaRect.offsetMax = Vector2.zero;
-        
-        // Create fill
-        GameObject fillObj = new GameObject("Fill");
-        fillObj.transform.SetParent(fillAreaObj.transform);
-        Image fillImage = fillObj.AddComponent<Image>();
-        fillImage.color = Color.green;
-        
-        RectTransform fillRect = fillObj.GetComponent<RectTransform>();
-        fillRect.anchorMin = Vector2.zero;
-        fillRect.anchorMax = Vector2.one;
+        RectTransform fillRect = fillObj.AddComponent<RectTransform>();
+        fillRect.anchorMin = new Vector2(0, 0);
+        fillRect.anchorMax = new Vector2(0, 1); // Start with 0 width
         fillRect.offsetMin = Vector2.zero;
         fillRect.offsetMax = Vector2.zero;
         
-        progressBar.fillRect = fillRect;
+        progressBarFill = fillObj.AddComponent<Image>();
+        progressBarFill.color = Color.green;
         
-        progressBarUI = bgObj;
-        progressBarUI.SetActive(false);
+        progressBarContainer = canvasObj;
+        progressBarContainer.SetActive(false);
     }
     
     void Update()
@@ -141,6 +97,13 @@ public class TreasureSpot : MonoBehaviour
         
         CheckPlayerDistance();
         HandleInteraction();
+        
+        // Make progress bar face camera
+        if (progressBarContainer != null && progressBarContainer.activeInHierarchy)
+        {
+            progressBarContainer.transform.LookAt(Camera.main.transform);
+            progressBarContainer.transform.Rotate(0, 180, 0); // Flip to face camera correctly
+        }
     }
     
     void CheckPlayerDistance()
@@ -172,16 +135,26 @@ public class TreasureSpot : MonoBehaviour
     {
         if (!playerNearby) return;
         
-        if (Input.GetMouseButtonDown(0))
+        // Use both mouse and touch input
+        bool inputDown = Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began);
+        bool inputHeld = Input.GetMouseButton(0) || (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved));
+        bool inputUp = Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended);
+        
+        if (inputDown)
         {
             StartInteraction();
         }
-        else if (Input.GetMouseButton(0) && isInteracting)
+        else if (inputHeld && isInteracting)
         {
             ContinueInteraction();
         }
-        else if (Input.GetMouseButtonUp(0) && isInteracting)
+        else if (inputUp && isInteracting)
         {
+            StopInteraction();
+        }
+        else if (!inputHeld && isInteracting)
+        {
+            // Handle case where input is released without InputUp being detected
             StopInteraction();
         }
     }
@@ -189,19 +162,18 @@ public class TreasureSpot : MonoBehaviour
     void StartInteraction()
     {
         isInteracting = true;
-        if (progressBarUI != null)
-            progressBarUI.SetActive(true);
+        if (progressBarContainer != null)
+            progressBarContainer.SetActive(true);
         currentProgress = 0f;
-        if (progressBar != null)
-            progressBar.value = 0f;
+        UpdateProgressBar();
         Debug.Log($"Started interacting with treasure: {gameObject.name}");
     }
     
     void ContinueInteraction()
     {
         currentProgress += Time.deltaTime / randomInteractionTime;
-        if (progressBar != null)
-            progressBar.value = currentProgress;
+        currentProgress = Mathf.Clamp01(currentProgress);
+        UpdateProgressBar();
         
         if (currentProgress >= 1f)
         {
@@ -209,33 +181,47 @@ public class TreasureSpot : MonoBehaviour
         }
     }
     
+    void UpdateProgressBar()
+    {
+        if (progressBarFill != null)
+        {
+            // Update the fill amount by changing the anchor
+            RectTransform fillRect = progressBarFill.GetComponent<RectTransform>();
+            fillRect.anchorMax = new Vector2(currentProgress, 1);
+        }
+    }
+    
     void StopInteraction()
     {
-        isInteracting = false;
-        if (progressBarUI != null)
-            progressBarUI.SetActive(false);
-        currentProgress = 0f;
         if (isInteracting)
+        {
+            isInteracting = false;
+            if (progressBarContainer != null)
+                progressBarContainer.SetActive(false);
+            currentProgress = 0f;
             Debug.Log($"Stopped interacting with treasure: {gameObject.name}");
+        }
     }
     
     void CompleteInteraction()
     {
         isCollected = true;
+        isInteracting = false;
+        
         if (sparkleEffect != null)
             sparkleEffect.SetActive(false);
-        if (progressBarUI != null)
-            progressBarUI.SetActive(false);
+        if (progressBarContainer != null)
+            progressBarContainer.SetActive(false);
         
         Debug.Log($"Completed interaction with treasure: {gameObject.name}");
         
-        // Notify the game manager
+        // Notify the treasure manager
         if (TreasureManager.Instance != null)
         {
             TreasureManager.Instance.CollectTreasure();
         }
         
-        // Hide or destroy this treasure spot
+        // Hide this treasure spot
         gameObject.SetActive(false);
     }
     

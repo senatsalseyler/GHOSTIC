@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 613893262396438424}
   - component: {fileID: 1053307981144960893}
   - component: {fileID: 1762152742936052212}
-  - component: {fileID: 1461564932974041576}
   m_Layer: 0
   m_Name: FlowerScent
   m_TagString: Untagged
@@ -4897,24 +4896,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1461564932974041576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4029127946149378320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33a3899a45a5aee4894b8589d76242d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRadius: 3
-  player: {fileID: 0}
-  sparkleEffect: {fileID: 0}
-  worldCanvas: {fileID: 0}
-  progressBarUI: {fileID: 0}
-  progressBar: {fileID: 0}
-  treasureIcon: {fileID: 0}
-  treasureSprite: {fileID: 0}
-  interactionTime: 2

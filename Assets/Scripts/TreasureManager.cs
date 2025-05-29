@@ -8,20 +8,20 @@ public class TreasureManager : MonoBehaviour
     [Header("Treasure Settings")]
     public int totalTreasures = 20;
     public GameObject treasurePrefab;
-    public GameObject endPointPrefab; // The goal object
+    public GameObject endPointPrefab;
     public Transform player;
     
-    [Header("Endless Level Settings")]
-    public float levelWidth = 10f; // Width of the playable area
-    public float treasureSpacing = 20f; // Vertical distance between treasure areas
-    public float endPointDistance = 500f; // How far up the endpoint is
+    [Header("Level Layout Settings")]
+    public float levelWidth = 10f;
+    public float treasureSpacing = 20f;
+    public float endPointDistance = 500f;
     
     [Header("Spawn Settings")]
-    public float minDistanceFromCenter = 2f; // Min distance from center line
-    public float maxDistanceFromCenter = 4.5f; // Max distance from center line
+    public float minDistanceFromCenter = 2f;
+    public float maxDistanceFromCenter = 4.5f;
     
     [Header("Sparkle Effect")]
-    public GameObject sparkleEffectPrefab; // Assign a particle system or visual effect
+    public GameObject sparkleEffectPrefab;
     
     private int collectedTreasures = 0;
     private GameObject endPoint;
@@ -42,6 +42,18 @@ public class TreasureManager : MonoBehaviour
     
     void Start()
     {
+        FindPlayer();
+        
+        if (!ValidateReferences()) return;
+        
+        SpawnTreasuresAlongPath();
+        SpawnEndPoint();
+        
+        Debug.Log($"Spawned {totalTreasures} treasures and endpoint");
+    }
+    
+    void FindPlayer()
+    {
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -55,73 +67,94 @@ public class TreasureManager : MonoBehaviour
                 Debug.LogError("Player not found! Make sure player has 'Player' tag");
             }
         }
-        
+    }
+    
+    bool ValidateReferences()
+    {
         if (treasurePrefab == null)
         {
             Debug.LogError("Treasure prefab not assigned!");
-            return;
+            return false;
         }
         
         if (endPointPrefab == null)
         {
             Debug.LogError("EndPoint prefab not assigned!");
-            return;
+            return false;
         }
         
-        SpawnTreasuresAlongPath();
-        SpawnEndPoint();
-        
-        Debug.Log($"Spawned {totalTreasures} treasures and endpoint");
+        return true;
     }
     
     void SpawnTreasuresAlongPath()
     {
         for (int i = 0; i < totalTreasures; i++)
         {
-            // Calculate Y position (going upward)
-            float yPos = (i + 1) * treasureSpacing;
-            
-            // Random X position (left or right of center)
-            float xPos = Random.Range(-maxDistanceFromCenter, maxDistanceFromCenter);
-            
-            // Make sure it's not too close to center
-            if (Mathf.Abs(xPos) < minDistanceFromCenter)
-            {
-                xPos = xPos >= 0 ? minDistanceFromCenter : -minDistanceFromCenter;
-            }
-            
-            Vector2 treasurePos = new Vector2(xPos, yPos);
-            
-            GameObject treasure = Instantiate(treasurePrefab, treasurePos, Quaternion.identity);
-            treasure.name = "Treasure_" + i;
-            
-            // Set up the treasure spot component
-            TreasureSpot treasureSpot = treasure.GetComponent<TreasureSpot>();
-            if (treasureSpot == null)
-            {
-                treasureSpot = treasure.AddComponent<TreasureSpot>();
-            }
-            
-            // Set player reference
-            treasureSpot.player = player;
-            
-            // Create sparkle effect if we have a prefab
-            if (sparkleEffectPrefab != null)
-            {
-                GameObject sparkle = Instantiate(sparkleEffectPrefab, treasure.transform);
-                sparkle.name = "SparkleEffect";
-                treasureSpot.sparkleEffect = sparkle;
-                sparkle.SetActive(false);
-            }
-            else
-            {
-                // Create a simple sparkle effect using a basic GameObject with renderer
-                GameObject sparkle = CreateSimpleSparkleEffect(treasure.transform);
-                treasureSpot.sparkleEffect = sparkle;
-            }
-            
-            Debug.Log($"Spawned treasure {i} at position {treasurePos}");
+            Vector2 treasurePos = GenerateRandomTreasurePosition(i);
+            GameObject treasure = CreateTreasure(treasurePos, i);
+            SetupTreasureComponents(treasure);
         }
+    }
+    
+    Vector2 GenerateRandomTreasurePosition(int treasureIndex)
+    {
+        // Calculate Y position (going upward along the path)
+        float yPos = (treasureIndex + 1) * treasureSpacing;
+        
+        // Generate random X position (left or right of center)
+        float xPos = Random.Range(-maxDistanceFromCenter, maxDistanceFromCenter);
+        
+        // Ensure minimum distance from center line
+        if (Mathf.Abs(xPos) < minDistanceFromCenter)
+        {
+            xPos = xPos >= 0 ? minDistanceFromCenter : -minDistanceFromCenter;
+        }
+        
+        return new Vector2(xPos, yPos);
+    }
+    
+    GameObject CreateTreasure(Vector2 position, int index)
+    {
+        GameObject treasure = Instantiate(treasurePrefab, position, Quaternion.identity);
+        treasure.name = "Treasure_" + index;
+        Debug.Log($"Spawned treasure {index} at position {position}");
+        return treasure;
+    }
+    
+    void SetupTreasureComponents(GameObject treasure)
+    {
+        // Get or add TreasureSpot component
+        TreasureSpot treasureSpot = treasure.GetComponent<TreasureSpot>();
+        if (treasureSpot == null)
+        {
+            treasureSpot = treasure.AddComponent<TreasureSpot>();
+        }
+        
+        // Set player reference
+        treasureSpot.player = player;
+        
+        // Create sparkle effect
+        CreateSparkleEffect(treasure, treasureSpot);
+    }
+    
+    void CreateSparkleEffect(GameObject treasure, TreasureSpot treasureSpot)
+    {
+        GameObject sparkle;
+        
+        if (sparkleEffectPrefab != null)
+        {
+            // Use provided sparkle prefab
+            sparkle = Instantiate(sparkleEffectPrefab, treasure.transform);
+            sparkle.name = "SparkleEffect";
+        }
+        else
+        {
+            // Create simple sparkle effect
+            sparkle = CreateSimpleSparkleEffect(treasure.transform);
+        }
+        
+        treasureSpot.sparkleEffect = sparkle;
+        sparkle.SetActive(false);
     }
     
     GameObject CreateSimpleSparkleEffect(Transform parent)
@@ -130,27 +163,38 @@ public class TreasureManager : MonoBehaviour
         sparkle.transform.SetParent(parent);
         sparkle.transform.localPosition = Vector3.zero;
         
-        // Add a simple visual indicator (you can replace this with particle system)
+        // Create sparkle sprite
         SpriteRenderer renderer = sparkle.AddComponent<SpriteRenderer>();
+        renderer.sprite = CreateSparkleSprite();
+        renderer.sortingOrder = 10;
         
-        // Create a simple circle sprite
-        Texture2D texture = new Texture2D(32, 32);
-        Color[] colors = new Color[32 * 32];
-        Vector2 center = new Vector2(16, 16);
+        // Add pulsing animation
+        SparkleAnimation animation = sparkle.AddComponent<SparkleAnimation>();
         
-        for (int x = 0; x < 32; x++)
+        return sparkle;
+    }
+    
+    Sprite CreateSparkleSprite()
+    {
+        int size = 32;
+        Texture2D texture = new Texture2D(size, size);
+        Color[] colors = new Color[size * size];
+        Vector2 center = new Vector2(size / 2, size / 2);
+        float radius = size / 4;
+        
+        for (int x = 0; x < size; x++)
         {
-            for (int y = 0; y < 32; y++)
+            for (int y = 0; y < size; y++)
             {
                 float distance = Vector2.Distance(new Vector2(x, y), center);
-                if (distance <= 8)
+                if (distance <= radius)
                 {
-                    float alpha = 1f - (distance / 8f);
-                    colors[y * 32 + x] = new Color(1f, 1f, 0f, alpha); // Yellow with fade
+                    float alpha = 1f - (distance / radius);
+                    colors[y * size + x] = new Color(1f, 1f, 0f, alpha); // Yellow sparkle
                 }
                 else
                 {
-                    colors[y * 32 + x] = Color.clear;
+                    colors[y * size + x] = Color.clear;
                 }
             }
         }
@@ -158,15 +202,7 @@ public class TreasureManager : MonoBehaviour
         texture.SetPixels(colors);
         texture.Apply();
         
-        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, 32, 32), new Vector2(0.5f, 0.5f));
-        renderer.sprite = sprite;
-        renderer.sortingOrder = 10;
-        
-        // Add pulsing animation
-        SparkleAnimation animation = sparkle.AddComponent<SparkleAnimation>();
-        
-        sparkle.SetActive(false);
-        return sparkle;
+        return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f));
     }
     
     void SpawnEndPoint()
@@ -175,7 +211,7 @@ public class TreasureManager : MonoBehaviour
         endPoint = Instantiate(endPointPrefab, endPos, Quaternion.identity);
         endPoint.name = "EndPoint";
         
-        // Add EndPoint script if it doesn't exist
+        // Ensure EndPoint script is attached
         EndPoint endPointScript = endPoint.GetComponent<EndPoint>();
         if (endPointScript == null)
         {
@@ -190,7 +226,7 @@ public class TreasureManager : MonoBehaviour
         collectedTreasures++;
         Debug.Log($"Treasures collected: {collectedTreasures}/{totalTreasures}");
         
-        // Optional: Add sound effect or other feedback here
+        // Optional: Add sound effect, score update, or other feedback here
     }
     
     public int GetCollectedTreasures()
@@ -202,9 +238,14 @@ public class TreasureManager : MonoBehaviour
     {
         return totalTreasures;
     }
+    
+    public float GetCompletionPercentage()
+    {
+        return totalTreasures > 0 ? (float)collectedTreasures / totalTreasures * 100f : 0f;
+    }
 }
 
-// Simple animation component for sparkle effect
+// Simple sparkle animation component
 public class SparkleAnimation : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;

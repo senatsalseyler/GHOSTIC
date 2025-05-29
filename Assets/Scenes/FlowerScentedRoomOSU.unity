@@ -3079,7 +3079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e18e3fb6f5de6c41b1423dc92a8f600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTreasures: 20
+  totalTreasures: 5
   treasurePrefab: {fileID: 7499232983301646651}
   endPointPrefab: {fileID: 1065419492}
   player: {fileID: 529120518}
@@ -3088,7 +3088,8 @@ MonoBehaviour:
   endPointDistance: 100
   minDistanceFromCenter: 2
   maxDistanceFromCenter: 4.5
-  sparkleEffectPrefab: {fileID: 1898998852}
+  sparkleEffectPrefab: {fileID: 4029127946149378320, guid: 3565930363df7b646b93bc86b0c0dff7,
+    type: 3}
 --- !u!4 &591368260
 Transform:
   m_ObjectHideFlags: 0
@@ -4054,7 +4055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 2
-  sparkleEffect: {fileID: 1898998852}
+  sparkleEffect: {fileID: 0}
   endPointColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!1 &1091892228
 GameObject:
@@ -5754,6 +5755,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662332629}
   m_CullTransparentMesh: 1
+--- !u!1001 &1664227865
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029127946149378320, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_Name
+      value: FlowerScent
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029127946149378320, guid: 3565930363df7b646b93bc86b0c0dff7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3565930363df7b646b93bc86b0c0dff7, type: 3}
+--- !u!1 &1664227866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4029127946149378320, guid: 3565930363df7b646b93bc86b0c0dff7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1664227865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1679983275
 GameObject:
   m_ObjectHideFlags: 0
@@ -6249,86 +6329,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1898998851
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 613893262396438424, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4029127946149378320, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_Name
-      value: FlowerScent (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4029127946149378320, guid: 3565930363df7b646b93bc86b0c0dff7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1461564932974041576, guid: 3565930363df7b646b93bc86b0c0dff7, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3565930363df7b646b93bc86b0c0dff7, type: 3}
---- !u!1 &1898998852 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4029127946149378320, guid: 3565930363df7b646b93bc86b0c0dff7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1898998851}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1913939758
 GameObject:
   m_ObjectHideFlags: 0
@@ -7234,12 +7234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 3
   player: {fileID: 529120518}
-  sparkleEffect: {fileID: 1898998852}
-  worldCanvas: {fileID: 1521957616}
-  progressBarUI: {fileID: 2082491343}
-  progressBar: {fileID: 2082491345}
-  treasureIcon: {fileID: 1377011482}
-  treasureSprite: {fileID: 21300000, guid: 7e022a8eb489aa644a770816b1021316, type: 3}
+  sparkleEffect: {fileID: 1664227866}
   interactionTime: 2
 --- !u!1001 &5502353080387799924
 PrefabInstance:
@@ -7475,7 +7470,7 @@ GameObject:
   - component: {fileID: 6303925140772513715}
   - component: {fileID: 5453986414789560771}
   m_Layer: 0
-  m_Name: FlowerScent
+  m_Name: Spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7497,4 +7492,4 @@ SceneRoots:
   - {fileID: 6303925140772513715}
   - {fileID: 1065419495}
   - {fileID: 591368260}
-  - {fileID: 1898998851}
+  - {fileID: 1664227865}
