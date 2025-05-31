@@ -8,13 +8,15 @@ public class TreasureManager : MonoBehaviour
     [Header("Treasure Settings")]
     public int totalTreasures = 20;
     public GameObject treasurePrefab;
-    public GameObject endPointPrefab;
     public Transform player;
+    
+    [Header("Memory Object Settings")]
+    public GameObject memoryObjectPrefab;
+    public string memoryInfoText = "Collect your first memory!";
     
     [Header("Level Layout Settings")]
     public float levelWidth = 10f;
     public float treasureSpacing = 20f;
-    public float endPointDistance = 500f;
     
     [Header("Spawn Settings")]
     public float minDistanceFromCenter = 2f;
@@ -24,7 +26,8 @@ public class TreasureManager : MonoBehaviour
     public GameObject sparkleEffectPrefab;
     
     private int collectedTreasures = 0;
-    private GameObject endPoint;
+    private GameObject memoryObject;
+    private bool allTreasuresCollected = false;
     
     void Awake()
     {
@@ -47,9 +50,8 @@ public class TreasureManager : MonoBehaviour
         if (!ValidateReferences()) return;
         
         SpawnTreasuresAlongPath();
-        SpawnEndPoint();
         
-        Debug.Log($"Spawned {totalTreasures} treasures and endpoint");
+        Debug.Log($"Spawned {totalTreasures} treasures");
     }
     
     void FindPlayer()
@@ -74,12 +76,6 @@ public class TreasureManager : MonoBehaviour
         if (treasurePrefab == null)
         {
             Debug.LogError("Treasure prefab not assigned!");
-            return false;
-        }
-        
-        if (endPointPrefab == null)
-        {
-            Debug.LogError("EndPoint prefab not assigned!");
             return false;
         }
         
@@ -205,20 +201,95 @@ public class TreasureManager : MonoBehaviour
         return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f));
     }
     
-    void SpawnEndPoint()
+    void SpawnMemoryObject()
     {
-        Vector2 endPos = new Vector2(0, endPointDistance);
-        endPoint = Instantiate(endPointPrefab, endPos, Quaternion.identity);
-        endPoint.name = "EndPoint";
+        if (memoryObject != null) return; // Already spawned
         
-        // Ensure EndPoint script is attached
-        EndPoint endPointScript = endPoint.GetComponent<EndPoint>();
-        if (endPointScript == null)
+        // Calculate position - spawn at the end of the treasure path
+        float lastTreasureY = totalTreasures * treasureSpacing;
+        Vector2 memoryPos = new Vector2(0, lastTreasureY + treasureSpacing);
+        
+        if (memoryObjectPrefab != null)
         {
-            endPointScript = endPoint.AddComponent<EndPoint>();
+            memoryObject = Instantiate(memoryObjectPrefab, memoryPos, Quaternion.identity);
+        }
+        else
+        {
+            // Create default memory object if prefab not assigned
+            memoryObject = CreateDefaultMemoryObject(memoryPos);
         }
         
-        Debug.Log($"Spawned endpoint at position {endPos}");
+        memoryObject.name = "FirstMemory";
+        
+        // Setup memory object component
+        MemoryObject memoryComponent = memoryObject.GetComponent<MemoryObject>();
+        if (memoryComponent == null)
+        {
+            memoryComponent = memoryObject.AddComponent<MemoryObject>();
+        }
+        
+        memoryComponent.infoText = memoryInfoText;
+        memoryComponent.player = player;
+        
+        Debug.Log($"Memory object spawned at position {memoryPos}");
+    }
+    
+    GameObject CreateDefaultMemoryObject(Vector2 position)
+    {
+        GameObject memory = new GameObject("FirstMemory");
+        memory.transform.position = position;
+        
+        // Create visual representation
+        SpriteRenderer renderer = memory.AddComponent<SpriteRenderer>();
+        renderer.sprite = CreateMemorySprite();
+        renderer.sortingOrder = 5;
+        
+        // Add collider for interaction
+        CircleCollider2D collider = memory.AddComponent<CircleCollider2D>();
+        collider.isTrigger = true;
+        collider.radius = 1f;
+        
+        return memory;
+    }
+    
+    Sprite CreateMemorySprite()
+    {
+        int size = 64;
+        Texture2D texture = new Texture2D(size, size);
+        Color[] colors = new Color[size * size];
+        Vector2 center = new Vector2(size / 2, size / 2);
+        
+        for (int x = 0; x < size; x++)
+        {
+            for (int y = 0; y < size; y++)
+            {
+                float distance = Vector2.Distance(new Vector2(x, y), center);
+                if (distance <= 25)
+                {
+                    if (distance <= 20)
+                    {
+                        // Create a gradient from purple to pink for memory object
+                        float factor = distance / 20f;
+                        Color memoryColor = Color.Lerp(new Color(0.8f, 0.2f, 0.8f, 1f), new Color(1f, 0.4f, 0.8f, 1f), factor);
+                        colors[y * size + x] = memoryColor;
+                    }
+                    else
+                    {
+                        float alpha = 1f - ((distance - 20f) / 5f);
+                        colors[y * size + x] = new Color(1f, 0.4f, 0.8f, alpha);
+                    }
+                }
+                else
+                {
+                    colors[y * size + x] = Color.clear;
+                }
+            }
+        }
+        
+        texture.SetPixels(colors);
+        texture.Apply();
+        
+        return Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(0.5f, 0.5f));
     }
     
     public void CollectTreasure()
@@ -226,7 +297,13 @@ public class TreasureManager : MonoBehaviour
         collectedTreasures++;
         Debug.Log($"Treasures collected: {collectedTreasures}/{totalTreasures}");
         
-        // Optional: Add sound effect, score update, or other feedback here
+        // Check if all treasures are collected
+        if (collectedTreasures >= totalTreasures && !allTreasuresCollected)
+        {
+            allTreasuresCollected = true;
+            Debug.Log("All treasures collected! Spawning memory object...");
+            SpawnMemoryObject();
+        }
     }
     
     public int GetCollectedTreasures()
@@ -253,6 +330,11 @@ public class TreasureManager : MonoBehaviour
     public float GetCompletionPercentage()
     {
         return totalTreasures > 0 ? (float)collectedTreasures / totalTreasures * 100f : 0f;
+    }
+    
+    public bool AreAllTreasuresCollected()
+    {
+        return allTreasuresCollected;
     }
 }
 

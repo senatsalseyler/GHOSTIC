@@ -3126,13 +3126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e18e3fb6f5de6c41b1423dc92a8f600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTreasures: 20
+  totalTreasures: 5
   treasurePrefab: {fileID: 7499232983301646651}
-  endPointPrefab: {fileID: 1065419492}
   player: {fileID: 529120518}
+  memoryObjectPrefab: {fileID: 0}
+  memoryInfoText: Collect your first memory!
   levelWidth: 10
   treasureSpacing: 20
-  endPointDistance: 100
   minDistanceFromCenter: 2
   maxDistanceFromCenter: 4.5
   sparkleEffectPrefab: {fileID: 4029127946149378320, guid: 3565930363df7b646b93bc86b0c0dff7,
@@ -4012,6 +4012,7 @@ GameObject:
   - component: {fileID: 1065419495}
   - component: {fileID: 1065419494}
   - component: {fileID: 1065419496}
+  - component: {fileID: 1065419497}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -4096,7 +4097,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065419492}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07f109685a9004e408e8cf544be6b026, type: 3}
   m_Name: 
@@ -4104,6 +4105,26 @@ MonoBehaviour:
   detectionRadius: 2
   sparkleEffect: {fileID: 0}
   endPointColor: {r: 0, g: 1, b: 1, a: 1}
+--- !u!114 &1065419497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065419492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f033c1ccf30dd474681dbbb26459ddc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 2
+  infoText: Collect your first memory!
+  cutsceneSceneName: CutsceneScene
+  infoUI: {fileID: 0}
+  infoTextComponent: {fileID: 0}
+  collectButton: {fileID: 0}
+  glowEffect: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &1091892228
 GameObject:
   m_ObjectHideFlags: 0
