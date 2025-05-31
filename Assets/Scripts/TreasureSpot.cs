@@ -12,7 +12,9 @@ public class TreasureSpot : MonoBehaviour
     [Header("Interaction Settings")]
     public float interactionTime = 2f;
     private float randomInteractionTime;
-    
+
+    [Header("Audio")]
+    public AudioSource collection;
     // Simple progress bar using a sprite renderer
     private GameObject progressBarBG;
     private GameObject progressBarFill;
@@ -22,6 +24,7 @@ public class TreasureSpot : MonoBehaviour
     private bool isInteracting = false;
     private bool isCollected = false;
     private float currentProgress = 0f;
+    
     
     void Start()
     {
@@ -206,6 +209,7 @@ public class TreasureSpot : MonoBehaviour
         
         // Hide this treasure spot
         gameObject.SetActive(false);
+        collection.Play();
     }
     
     void OnDrawGizmosSelected()

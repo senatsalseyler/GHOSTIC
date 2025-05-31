@@ -22,3 +22,10 @@ AudioImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 112021
+  packageName: Horror Elements
+  packageVersion: 1.0
+  assetPath: Assets/MusicAndSounds/Horror Elements/Save Room/SR_Strange_room.wav
+  uploadId: 230988
