@@ -239,6 +239,17 @@ public class TreasureManager : MonoBehaviour
         return totalTreasures;
     }
     
+    // Additional methods for UI Counter compatibility
+    public int GetCollectedCount()
+    {
+        return collectedTreasures;
+    }
+    
+    public int GetTotalCount()
+    {
+        return totalTreasures;
+    }
+    
     public float GetCompletionPercentage()
     {
         return totalTreasures > 0 ? (float)collectedTreasures / totalTreasures * 100f : 0f;
